@@ -819,9 +819,7 @@ service cloud.firestore {
         (request.auth != null &&
          adminId == request.auth.uid &&
          request.auth.token.email in [
-           'adityaram1826@gmail.com',
-           'adityasingh121203@gmail.com',
-           'smd551004@gmail.com'
+           'trendscapesupport@gmail.com'
          ] &&
          !exists(/databases/$(database)/documents/admins/$(adminId)));
       allow update, delete: if isAdminByUID();

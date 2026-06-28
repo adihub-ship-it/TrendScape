@@ -6634,7 +6634,10 @@ async function verifyPinCode(pincode, resultElId) {
   if (isFree) {
     result.innerHTML='<div style="display:flex;align-items:center;gap:10px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px"><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><p style="font-size:13px;font-weight:800;color:#15803d;margin:0">✅ Free Delivery Available for PIN <strong>'+pincode+'</strong></p></div>';
   } else {
-    result.innerHTML='<div style="display:flex;align-items:center;gap:10px;background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px"><svg width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2" viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><p style="font-size:13px;font-weight:700;color:#16a34a;margin:0">🚚 FREE Delivery to PIN <strong>'+pincode+'</strong></p></div>';
+    var zone = getCodZoneFromPin(pincode);
+    var fee  = calculateCodFee(pincode);
+    var zoneLabel = zone===1 ? 'Bardhaman Area' : zone===2 ? 'West Bengal' : 'Other State';
+    result.innerHTML='<div style="display:flex;align-items:center;gap:10px;background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;padding:12px 16px"><svg width="18" height="18" fill="none" stroke="#ea580c" stroke-width="2" viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><div><p style="font-size:13px;font-weight:800;color:#c2410c;margin:0">Delivery available — COD Fee: ₹'+fee+' ('+zoneLabel+')</p><p style="font-size:11px;color:#ea580c;margin:2px 0 0;font-weight:600">Choose UPI at checkout to get free delivery</p></div></div>';
   }
 }
 
